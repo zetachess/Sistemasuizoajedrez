@@ -14,5 +14,5 @@ export const dynamic = 'force-dynamic'
 export default async function RootLayout({ children }) {
   const navbar = <Navbar logo={<span className="book-logo">♞ <b>Dominando el Sistema Suizo Holandés</b></span>} />
   const footer = <Footer>Dominando el Sistema Suizo Holandés · FIDE C.04.3 · Versión 2026</Footer>
-  return <html lang="es" dir="ltr" suppressHydrationWarning><Head><meta name="theme-color" content="#f8f6f1" /></Head><body><Layout navbar={navbar} pageMap={await getPageMap()} docsRepositoryBase="https://github.com" footer={footer}>{children}</Layout></body></html>
+  return <html lang="es" dir="ltr" suppressHydrationWarning><Head><meta name="theme-color" content="#f8f6f1" /></Head><body><Layout navbar={navbar} pageMap={await getPageMap()} docsRepositoryBase="https://github.com" footer={footer}>{children ?? <main />}</Layout></body></html>
 }
