@@ -1,0 +1,35 @@
+---
+title: "9. Séptima ronda (historiales de color)"
+---
+
+# 9. Séptima ronda (historiales de color)
+
+Séptima ronda (historiales de color) En la sexta ronda, #5 llegó tarde y perdió por incomparecencia. Actualizamos la tabla cruzada: Jugador TPN 1 2 3 4 5 6 7 8 9 Emp Pts Emp Pts Emp Pts Emp Pts Emp Pts Emp Pts Emp Pts Emp Pts Emp Pts Alice 1 +W8 1,0 +B14 2,0 =W4 2,5 +B2 3,5 =W3 4,0 +B7↓ 5,0 w↓ Bruno 2 =B9 0,5 +W5 1,5 =B3↑ 2,0 -W1↑ 2,0 =B12 2,5 +W10↓ 3,5 b↓ Carla 3 +W10 1,0 +B15 2,0 =W2↓ 2,5 +F4↓ 3,5 =B1 4,0 +W4↓ 5,0 B↓ David 4 +B11 1,0 +W13 2,0 =B1 2,5 -F3 2,5 +W5↓ 3,5 -B3↑ 3,5 W↑↓ Eloise 5 =W12 0,5 -B2 0,5 =B6 1,0 +W13 2,0 -B4↑ 2,0 -F14 2,0 W-↑ Finn 6 -B13 0,0 HPB↓ 0,5 =W5 1,0 +B14 2,0 -W8 2,0 +B15↓ 3,0 W↓ Giorgia 7 -W14 0,0 +B10 1,0 HPB↓ 1,5 +W12↑ 2,5 +B9↑ 3,5 -W1↑ 3,5 B↑↑ Kevin 8 -B1 0,0 +W11 1,0 +F13 2,0 -W9 2,0 +B6 3,0 +W12↓ 4,0 B↓ Louise 9 =W2 0,5 =B12 1,0 +W14 2,0 +B8 3,0 -W7↓ 3,0 =B11↓ 3,5 w↓↓ Mark 10 -B3 0,0 -W7 0,0 -B11 0,0 PAB↓ 1,0 +W15 2,0 -B2↑ 2,0 W↑ Nancy 11 -W4 0,0 -B8 0,0 +W10 1,0 +B15 2,0 -B13↓ 2,0 =W9↑ 2,5 b↑↓ Oskar 12 =B5 0,5 =W9 1,0 +W15 2,0 -B7↓ 2,0 =W2 2,5 -B8↑ 2,5 w↑ Patricia 13 +W6 1,0 -B4 1,0 -F8 1,0 -B5 1,0 +W11↑ 2,0 PAB↓ 3,0 b↓↑ Robert 14 +B7 1,0 -W1 1,0 -B9 1,0 -W6 1,0 PAB↓ 2,0 +F5↓ 3,0 b↓↓ Stephanie 15 PAB↓ 1,0 -W3 1,0 -B12 1,0 -W11 1,0 -B10 1,0 -W6↑ 1,0 HPB↓ 1,5 #15 estará ausente con un HPB. El número de jugadores disponibles es par y no habrá PAB. La prueba de completitud tiene éxito (por ejemplo, 1-9, 3-8, 2-4, 7-6, 13-14, 11-12 y 5-10). Los grupos son los siguientes. Obsérvese que casi todos flotaron en la ronda anterior, algo normal y casi inevitable en torneos con muchas rondas y pocos jugadores.
+
+• 5,0 puntos: \{1w↓, 3B↓\}
+
+• 4,0 puntos: \{8B↓\}
+
+• 3,5 puntos: \{2b↓, 4W↑, 7B↑, 9w↓\}
+
+• 3,0 puntos: \{6W↓, 13b, 14b↓\}
+
+• 2,5 puntos: \{11b↑, 12w↑\}
+
+• 2,0 puntos: \{5W, 10W↑\}
+
+El primer grupo, \{1w↓, 3B↓\}, solo contiene a dos jugadores incompatibles, que deben descender. En el siguiente, \{[1w↓, 3B↓][8B↓]\}, solo existe un residente y el Limbo no puede quedar vacío: Limbo 3B↓ S1 1w↓ S2 8B↓ #1 ya jugó contra #8, de modo que no existe emparejamiento legal con esos S1 y S2. Debemos utilizar otro conjunto de MDP emparejables [3.7.3], lo que equivale a intercambiar a #1 y #3 entre S1 y el Limbo. Obtenemos (3-8, 1↓). Séptima ronda (historiales de color) Su evaluación ilustra una idea importante. Parece vulnerar [C12], [C13] y [C14], pero al ser el único candidato legal también es necesariamente perfecto. Los criterios no exigen atender todas las preferencias, sino el mayor número posible. Como aquí no puede atenderse ninguna, el emparejamiento es perfecto. El grupo siguiente es \{[1w↓][2b↓, 4W↑, 7B↑, 9w↓]\}, heterogéneo. #1 solo puede enfrentarse a #9, por lo que la pareja MDP obligatoria es 1-9 y deja: S1R 2b↓ S2R 4W↑ 7B↑ El candidato natural es perfecto y el futuro flotante cumple [C8] y, por tanto, [C1]-[C7] en el grupo siguiente, incluido el criterio de completitud: por ejemplo, 7-6, 13-14, 11-12 y 5-10. El siguiente grupo, \{[7B↑][6W↓, 13b, 14b↓]\}, también es heterogéneo y par, por lo que no produce flotantes. El emparejamiento, sencillo, es (6 -7, 13 -14). Además, es el único emparejamiento completo legal porque #6 ya se enfrentó a #13 y #14. El grupo homogéneo \{11b↑, 12w↑\} produce la pareja trivial 12 -11. Lo mismo ocurre con \{5W, 10W↑\}, que da 5-10. Reunimos: (3B-8B, 1w-9w, 4W-2b, 6W-7B, 13b-14b, 12w-11b, 5W-10W) Asignación de colores Varias parejas presentan preferencias incompatibles85 que debemos resolver conforme a las reglas de asignación86:
+
+• 3B-8B. No es posible atender ambas preferencias y ninguna es más fuerte. Comparamos
+
+los historiales: #3, uWBWBW; #8, uBWWBW [5.2.3]. Las rondas no jugadas (la cuarta de #3 y la tercera de #8 ) se trasladan al inicio, como indica [C.04.2:3.4]. Comparando desde la última partida hacia atrás, la primera diferencia aparece en la tercera posición: #8 tuvo blancas y #3 negras. Por tanto, asignamos blancas a #3 y negras a #8: 3-8.
+
+• 1w-9w. Los historiales son idénticos: #1, WBWBWB; #9, WBWBWB. Pasamos a [5.2.4]
+
+y atendemos la preferencia del mejor clasificado. #1 tiene más puntos y recibe blancas: 1-9.
+
+• 13b-14b. Historiales: #13, uuWBBW; #14, uuBWBW. El resultado es 13-14.
+
+• 5W-10W. Historiales: #5, uWBBWB; #10, uBWBWB. El resultado es 5-10.
+
+Las parejas son (3-8, 1-9, 4-2, 6-7, 13-14, 12-11, 5-10). Curiosamente, este emparejamiento es casi idéntico al de la prueba de completitud. No es habitual, ni siquiera con una prueba «inteligente», pero puede ocurrir, sobre todo en torneos con pocos jugadores y muchas rondas. La probabilidad aumenta conforme avanza la competición. 85 Debido a ello, en la ronda siguiente tendremos que gestionar varias preferencias absolutas. 86 Véase «Asignación de colores», página 27. Séptima ronda (historiales de color) Tablero Jugadores Resultado 1 3 (5,0) - 8 (4,0) 1-0 2 1 (5,0) - 9 (3,5) ½-½ 3 4 (3,5) - 2 (3,5) 1-0 4 6 (3,0) - 7 (3,5) 0-1 5 13 (3,0) - 14 (3,0) 1-0 6 12 (2,5) - 11 (2,5) 1-0 7 5 (2,0) - 10 (2,0) 0-1 8 15 (1,0) - HPB ½ Ya podemos continuar.
