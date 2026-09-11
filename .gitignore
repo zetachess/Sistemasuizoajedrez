@@ -1,0 +1,7 @@
+node_modules/
+.next/
+out/
+work/npm-cache/
+work/source.txt
+work/*.backup.js
+npm-debug.log*
